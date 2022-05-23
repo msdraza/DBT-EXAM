@@ -1,0 +1,52 @@
+
+SECTION II
+1- Procedure:-
+----------------------------------------------------------------------------
+use exam;
+
+delimiter //
+create procedure PROC1(a varchar(20),b varchar(20))
+begin
+	declare x int;
+    set x = instr('a','b');
+    if x != 0 then
+			insert into tempp values (1, 'String Found');
+	else
+			insert into tempp values (0, 'String Not Found');
+	end if;
+end ; //
+delimiter ;
+call PROC1('CDAC','DAC');
+create table tempp
+(
+Fir int,
+Sec varchar(50)
+);
+select * from tempp;
+truncate tempp;
+drop procedure proc1;
+
+2- Function:-
+-----------------------------------------------------------------------------------
+delimiter //
+create function FUNC1(a int, b int, c int)
+returns boolean
+deterministic
+begin
+		
+		if a + b < c then
+        return false;
+        insert into tempp values(0, 'Invalid');
+        elseif a + c < b then
+        return false;
+        insert into tempp values(0, 'Invalid');
+        elseif b + c < a then
+        return false;
+        insert into tempp values(0, 'Invalid');
+        else
+        return true;
+        insert into tempp values(1, 'Valid');
+		end if;
+end ; //
+delimiter ;
+ call Func1(2,4,5);

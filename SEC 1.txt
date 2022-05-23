@@ -1,0 +1,59 @@
+create database exam;
+use exam;
+create table DEPT
+(
+DEPTNO int,
+DNAME varchar(15),
+LOC varchar(10)
+);
+Drop table DEPT;
+insert into DEPT values(10,'ACCOUNTING', 'NEW YORK'),
+(20, 'RESEARCH','DALLAS'),
+(30, 'SALES', 'CHICAGO'),
+(40, 'OPERATIONS', 'BOSTON');
+
+Query1-
+select * from DEPT;
+Create table EMP
+(
+EMPNO int,
+ENAME varchar(10),
+JOB varchar(9),
+HIREDATE date,
+SAL float,
+COMM float,
+DEPTNO int
+);
+insert into EMP values(7839, 'KING', 'MANAGER', '1991-11-17', 5000, NULL, 10),
+(7698, 'BLAKE', 'CLERK', '1981-05-01', 2850, NULL, 30),
+(7782, 'CLARK','MANAGER', '1981-06-09', 2450, NULL, 10),
+(7566, 'JONES', 'CLERK', '1981-04-02', 2975, NULL, 20),
+(7654, 'MARTIN', 'SALESMAN', '1981-09-28', 1250, 1400, 30),
+(7499, 'ALLEN', 'SALESMAN', '1981-02-20', 1600, 300, 30);
+
+Query2-
+select * from EMP;
+
+Query3-
+select* from emp where sal between 2499 and 5001;
+
+Query4-
+select ename from emp order by ename desc;
+
+Query5-
+select lower(job) from emp;
+
+Query6-
+select ename, length(ename) from emp;
+
+Query7-
+select deptno,count(empno) from emp group by deptno;
+
+Query8-
+select dname, ename from emp,dept where dept.deptno = emp.deptno;
+
+Query9-
+select instr(ename,'AR') from emp;
+
+Query10-
+select ename, 0.2*sal 'HRA' from emp;
